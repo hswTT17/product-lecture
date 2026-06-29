@@ -3,25 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Practice</title>
+  <title>제휴 문의</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- ── 헤더 ── -->
   <header>
-    <span class="logo">안녕</span>
+    <span class="logo">제휴 문의</span>
     <label class="switch" aria-label="다크 모드 토글">
       <input type="checkbox" id="themeToggle" />
       <span class="slider">
-        <span class="icon sun">☀️</span>
-        <span class="icon moon">🌙</span>
+        <span class="icon">☀️</span>
+        <span class="icon">🌙</span>
       </span>
     </label>
   </header>
 
-  <main>
-    <h1>안녕하세요!</h1>
-    <p>다크 모드 / 라이트 모드를 전환해보세요.</p>
-  </main>
+  <!-- ── 히어로 ── -->
+  <section class="hero">
+    <h1>함께 성장할 파트너를 찾고 있습니다</h1>
+    <p>제휴·협력 제안을 남겨주시면 검토 후 빠르게 연락드리겠습니다.</p>
+  </section>
+
+  <!-- ── 폼 섹션 ── -->
+  <section class="form-section">
+    <form id="affiliateForm" action="https://formspree.io/f/mzdlvlqo" method="POST" novalidate>
+
+      <div class="form-row two-col">
+        <div class="field">
+          <label for="name">담당자 이름 <span class="req">*</span></label>
+          <input id="name" name="name" type="text" placeholder="홍길동" required />
+          <span class="err-msg" id="err-name"></span>
+        </div>
+        <div class="field">
+          <label for="company">회사 / 브랜드명 <span class="req">*</span></label>
+          <input id="company" name="company" type="text" placeholder="(주)예시" required />
+          <span class="err-msg" id="err-company"></span>
+        </div>
+      </div>
+
+      <div class="form-row two-col">
+        <div class="field">
+          <label for="email">이메일 <span class="req">*</span></label>
+          <input id="email" name="email" type="email" placeholder="hello@example.com" required />
+          <span class="err-msg" id="err-email"></span>
+        </div>
+        <div class="field">
+          <label for="phone">연락처</label>
+          <input id="phone" name="phone" type="tel" placeholder="010-0000-0000" />
+          <span class="err-msg" id="err-phone"></span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="website">웹사이트 / SNS 링크</label>
+          <input id="website" name="website" type="url" placeholder="https://example.com" />
+          <span class="err-msg" id="err-website"></span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="type">제휴 유형 <span class="req">*</span></label>
+          <select id="type" name="type" required>
+            <option value="" disabled selected>제휴 유형을 선택하세요</option>
+            <option value="콘텐츠 협력">콘텐츠 협력</option>
+            <option value="공동 마케팅">공동 마케팅</option>
+            <option value="제품·서비스 제휴">제품·서비스 제휴</option>
+            <option value="광고·스폰서십">광고·스폰서십</option>
+            <option value="기타">기타</option>
+          </select>
+          <span class="err-msg" id="err-type"></span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="message">제안 내용 <span class="req">*</span></label>
+          <textarea id="message" name="message" rows="5"
+            placeholder="제휴 목적, 기대 효과, 제안 조건 등을 자유롭게 작성해주세요." required></textarea>
+          <span class="char-count"><span id="charCount">0</span> / 1000</span>
+          <span class="err-msg" id="err-message"></span>
+        </div>
+      </div>
+
+      <!-- honeypot (스팸 방지) -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+      <!-- Formspree 설정 -->
+      <input type="hidden" name="_subject" value="[제휴 문의] 새 문의가 도착했습니다" />
+
+      <button type="submit" id="submitBtn">
+        <span class="btn-text">문의 보내기</span>
+        <span class="spinner" aria-hidden="true"></span>
+      </button>
+
+    </form>
+
+    <!-- 결과 메시지 -->
+    <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+  </section>
+
+  <footer>
+    <p>© 2026 제휴 문의. All rights reserved.</p>
+  </footer>
 
   <script src="main.js"></script>
 </body>
